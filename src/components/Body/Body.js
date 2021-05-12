@@ -9,7 +9,7 @@ export default function Body(){
     return(
         <BrowserRouter>
 			<Switch>
-				<Route path="/" exact>
+				<Route path="/" exact >
 					<Home />
 				</Route>
                 <Route path="/filme/37" exact>
