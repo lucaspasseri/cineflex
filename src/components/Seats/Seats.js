@@ -26,9 +26,20 @@ export default function Seats(){
     function selecionarAssento(id, isAvailable,selected){
         if(isAvailable){
             if(!selected){
-                
+                listaAssentos.forEach(item =>{
+                    if(item.id === id){
+                        item.selected = true;
+                    }
+                });
+            }else {
+                listaAssentos.forEach(item =>{
+                    if(item.id === id){
+                        item.selected = false;
+                    } 
+                });
             }
         }
+        setListaAssentos([...listaAssentos]);
     }
 
     const listaComponentizada = listaAssentos.map(item=> {
