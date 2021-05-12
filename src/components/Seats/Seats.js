@@ -1,23 +1,38 @@
 import './Seats.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 export default function Seats(){
     
     const [listaAssentos, setListaAssentos] = useState([]);
-
+    const { idSessao } = useParams();
     useEffect(() => {
-		const requisicao = axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/1/seats");
+		const requisicao = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSessao}/seats`);
 
 		requisicao.then(resposta => {
-			setListaAssentos(resposta.data.seats);
+            const novoArray = [];
+            resposta.data.seats.forEach(element => {
+                novoArray.push({id: element.id,
+                                name: element.name,
+                                isAvailable: element.isAvailable,
+                                selected: false
+                                });
+            });
+			setListaAssentos(novoArray);
 		});
 	}, []);
 
     console.log(listaAssentos);
+    function selecionarAssento(id, isAvailable,selected){
+        if(isAvailable){
+            if(!selected){
+                
+            }
+        }
+    }
 
-    const listaComponentizada = listaAssentos.map((item,i)=> {
-        return <div className={item.isAvailable?"assento disponivel":"assento indisponivel"}>{item.name}</div>
+    const listaComponentizada = listaAssentos.map(item=> {
+        return <div onClick={() => selecionarAssento(item.id,item.isAvailable, item.selected)} key={item.id} className={!item.isAvailable?"assento indisponivel":(item.selected?"assento selecionado": "assento disponivel")}>{item.name}</div>
     });
 
     return(
@@ -25,7 +40,7 @@ export default function Seats(){
             <div className="titulo">Selecione o(s) assento(s)</div>
             <div className="grade-container">
                 <div className="grade">
-                    {listaComponentizada}
+                    {listaComponentizada.length===0? "Carregando..." : listaComponentizada} 
                 </div>
                 <div className="legendas">
                     <div className="legenda"><div className="selecionado"></div><span>Selecionado</span></div>

@@ -16,8 +16,8 @@ export default function Home(){
 
     console.log(listaFilmes);
 
-    const listaComponentizada = listaFilmes.map((item,i)=> {
-       return <Link to="/filme/37"><div className="cartaz" key={i} style={{backgroundImage:`url(${item.posterURL})`}}></div></Link>
+    const listaComponentizada = listaFilmes.map(item=> {
+       return <Link to={"filme/"+item.id}><div key={item.id} className="cartaz" style={{backgroundImage:`url(${item.posterURL})`}}></div></Link>
     });
     return(
         <>

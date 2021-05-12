@@ -12,10 +12,10 @@ export default function Body(){
 				<Route path="/" exact >
 					<Home />
 				</Route>
-                <Route path="/filme/37" exact>
+                <Route path="/filme/:idFilme" exact>
 					<Sessions />
 				</Route>
-                <Route path="/sessao/240" exact>
+                <Route path="/sessao/:idSessao" exact>
 					<Seats />
 				</Route>
 				<Route path="/sucesso" exact>
