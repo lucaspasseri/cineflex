@@ -1,11 +1,15 @@
+import Bottom from '../Bottom/Bottom';
 import './Seats.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
 export default function Seats(){
-    
     const [listaAssentos, setListaAssentos] = useState([]);
+    const [dadosRodape, setDadosRodape] = useState([]);
     const { idSessao } = useParams();
+    const [inputNome, setInputNome] = useState("");
+    const [inputCPF, setInputCPF] = useState("");
+
     useEffect(() => {
 		const requisicao = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSessao}/seats`);
 
@@ -18,11 +22,15 @@ export default function Seats(){
                                 selected: false
                                 });
             });
+            dadosRodape.push(resposta.data.movie.posterURL);
+            dadosRodape.push(resposta.data.movie.title);
+            dadosRodape.push(resposta.data.day.weekday);
+            dadosRodape.push(resposta.data.name);
+            setDadosRodape([...dadosRodape]);
 			setListaAssentos(novoArray);
 		});
 	}, []);
 
-    console.log(listaAssentos);
     function selecionarAssento(id, isAvailable,selected){
         if(isAvailable){
             if(!selected){
@@ -42,8 +50,20 @@ export default function Seats(){
         setListaAssentos([...listaAssentos]);
     }
 
+    function reservarAssentos(){
+        const listaAssentosSelecionados = listaAssentos.filter(item => item.selected===true);
+        const idsAssentosSelecionados =listaAssentosSelecionados.map(item => item.id);
+        const objReservarAssentos = { ids: idsAssentosSelecionados,
+                                        name: inputNome,
+                                        cpf: inputCPF
+                                     };
+        const requisicaoPost = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many", objReservarAssentos);
+        requisicaoPost.then(resposta=>console.log(resposta.data));
+        requisicaoPost.catch(erro => console.log(erro.response.data));
+    }
+
     const listaComponentizada = listaAssentos.map(item=> {
-        return <div onClick={() => selecionarAssento(item.id,item.isAvailable, item.selected)} key={item.id} className={!item.isAvailable?"assento indisponivel":(item.selected?"assento selecionado": "assento disponivel")}>{item.name}</div>
+        return <div onClick={() => item.isAvailable? selecionarAssento(item.id,item.isAvailable, item.selected):alert("Esse assento não esta disponível.")} key={item.id} className={!item.isAvailable?"assento indisponivel":(item.selected?"assento selecionado": "assento disponivel")}>{item.name}</div>
     });
 
     return(
@@ -61,11 +81,12 @@ export default function Seats(){
             </div>
             <div className="dados-comprador">
                 <div className="titulo-comprador">Nome do comprador:</div>
-                <input placeholder="Digite seu nome..."></input>
+                <input onChange={e => setInputNome(e.target.value)} value={inputNome} placeholder="Digite seu nome..."></input>
                 <div className="titulo-comprador">CPF do comprador:</div>
-                <input placeholder="Digite seu CPF..."></input>
+                <input onChange={e => setInputCPF(e.target.value)} value={inputCPF} placeholder="Digite seu CPF..."></input>
             </div>
-            <Link to="/sucesso"><div className="botao-container"><button className="botao-assentos">Reservar assento(s)</button></div></Link>
+            <Link to="/sucesso"><div onClick={reservarAssentos} className="botao-container"><button className="botao-assentos">Reservar assento(s)</button></div></Link>
+            <Bottom tipo="seats" dadosRodape={dadosRodape}/>
         </>
     );
 }

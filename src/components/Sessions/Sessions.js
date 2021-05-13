@@ -1,3 +1,4 @@
+import Bottom from '../Bottom/Bottom';
 import './Sessions.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -6,6 +7,7 @@ import { useParams } from 'react-router-dom';
 
 export default function Sessions(){
     const [listaSessoes, setListaSessoes] = useState([]);
+    const [dadosRodape, setDadosRodape] = useState([]);
     const { idFilme } = useParams();
     useEffect(() => {
         
@@ -13,6 +15,10 @@ export default function Sessions(){
 
 		requisicao.then(resposta => {
 			setListaSessoes(resposta.data.days);
+            dadosRodape.push(resposta.data.posterURL);
+            dadosRodape.push(resposta.data.title);
+            setDadosRodape([...dadosRodape]);
+
 		});
 	}, []);
 
@@ -30,6 +36,7 @@ export default function Sessions(){
             <div className="lista-sessoes">
                 {listaComponentizada.length===0? "Carregando..." : listaComponentizada} 
             </div>
+            <Bottom tipo="sessions" dadosRodape={dadosRodape}/>
         </>
     );
 }

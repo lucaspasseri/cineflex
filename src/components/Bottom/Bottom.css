@@ -1,4 +1,25 @@
-.info-footer {
+.rodape {
     height: 117px;
     background-color: #c3cfd9;
+    display: flex;
+    align-items: center;
+}
+.poster {
+    background-size: cover;
+    width: 64px;
+    height: 89px;
+    border: 8px solid #fff;
+    margin-left: 10px;
+}
+
+.dados-filme {
+    font-family: 'Roboto', sans-serif;
+    font-size: 26px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    color: #293845;
+}
+.container-infos-filme{
+    margin-left: 14px;
 }

@@ -14,10 +14,8 @@ export default function Home(){
 		});
 	}, []);
 
-    console.log(listaFilmes);
-
     const listaComponentizada = listaFilmes.map(item=> {
-       return <Link to={"filme/"+item.id}><div key={item.id} className="cartaz" style={{backgroundImage:`url(${item.posterURL})`}}></div></Link>
+       return <Link key={item.id} to={"filme/"+item.id}><div key={item.id} className="cartaz" style={{backgroundImage:`url(${item.posterURL})`}}></div></Link>
     });
     return(
         <>
