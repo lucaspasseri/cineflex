@@ -4,8 +4,11 @@ import Sessions from '../Sessions/Sessions';
 import Seats from '../Seats/Seats';
 import Success from	'../Success/Success';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { useState } from 'react';
 
 export default function Body(){
+	const [request, setRequest] = useState([]);
+
     return(
         <BrowserRouter>
 			<Switch>
@@ -16,10 +19,10 @@ export default function Body(){
 					<Sessions />
 				</Route>
                 <Route path="/sessao/:idSessao" exact>
-					<Seats />
+					<Seats request={request} setRequest={setRequest}/>
 				</Route>
 				<Route path="/sucesso" exact>
-					<Success />
+					<Success request={request}/>
 				</Route>
 			</Switch>
 		</BrowserRouter>

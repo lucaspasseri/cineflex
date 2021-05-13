@@ -3,7 +3,8 @@ import './Seats.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link, useParams } from "react-router-dom";
-export default function Seats(){
+export default function Seats(props){
+    const { request, setRequest } = props;
     const [listaAssentos, setListaAssentos] = useState([]);
     const [dadosRodape, setDadosRodape] = useState([]);
     const { idSessao } = useParams();
@@ -26,6 +27,9 @@ export default function Seats(){
             dadosRodape.push(resposta.data.movie.title);
             dadosRodape.push(resposta.data.day.weekday);
             dadosRodape.push(resposta.data.name);
+            request.push(resposta.data.movie.title);
+            request.push(resposta.data.day.date);
+            request.push(resposta.data.name);
             setDadosRodape([...dadosRodape]);
 			setListaAssentos(novoArray);
 		});
@@ -58,7 +62,13 @@ export default function Seats(){
                                         cpf: inputCPF
                                      };
         const requisicaoPost = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many", objReservarAssentos);
-        requisicaoPost.then(resposta=>console.log(resposta.data));
+        requisicaoPost.then(resposta=>{
+            request.push(idsAssentosSelecionados);
+            request.push(inputNome);
+            request.push(inputCPF);
+            setRequest([...request]);
+
+        });
         requisicaoPost.catch(erro => console.log(erro.response.data));
     }
 
