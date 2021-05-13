@@ -22,8 +22,6 @@ export default function Sessions(){
 		});
 	}, []);
 
-    console.log(listaSessoes);
-
     const listaComponentizada = listaSessoes.map(item=> {
         return  <div className="card-sessoes">
                     <div className="dia">{item.weekday} - {item.date}</div>

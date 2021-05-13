@@ -22,7 +22,7 @@ export default function Body(){
 					<Seats request={request} setRequest={setRequest}/>
 				</Route>
 				<Route path="/sucesso" exact>
-					<Success request={request}/>
+					<Success request={request} setRequest={setRequest}/>
 				</Route>
 			</Switch>
 		</BrowserRouter>

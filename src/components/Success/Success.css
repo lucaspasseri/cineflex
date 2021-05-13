@@ -13,5 +13,17 @@
     letter-spacing: 0.04em;
     color: #293845;
     margin-left: 29px;
-    margin-bottom: 80px;
+    margin-bottom: 50px;
+}
+.subtitulos {
+    font-size: 22px;
+    line-height: 26px;
+    font-weight: normal;
+}
+
+.filme-sessao, .ingressos, .comprador-dados {
+    margin-bottom: 40px;
+}
+.filme-sessao div:first-of-type, .ingressos div:first-of-type, .comprador-dados div:first-of-type {
+    margin-top: 5px;
 }

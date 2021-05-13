@@ -57,19 +57,20 @@ export default function Seats(props){
     function reservarAssentos(){
         const listaAssentosSelecionados = listaAssentos.filter(item => item.selected===true);
         const idsAssentosSelecionados =listaAssentosSelecionados.map(item => item.id);
+        const nomesAssentosSelecionados =listaAssentosSelecionados.map(item => item.name);
         const objReservarAssentos = { ids: idsAssentosSelecionados,
                                         name: inputNome,
                                         cpf: inputCPF
-                                     };
+                                    };
         const requisicaoPost = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many", objReservarAssentos);
         requisicaoPost.then(resposta=>{
-            request.push(idsAssentosSelecionados);
+            request.push(nomesAssentosSelecionados);
             request.push(inputNome);
             request.push(inputCPF);
             setRequest([...request]);
 
         });
-        requisicaoPost.catch(erro => console.log(erro.response.data));
+        requisicaoPost.catch(erro => alert(erro.response.data));
     }
 
     const listaComponentizada = listaAssentos.map(item=> {
