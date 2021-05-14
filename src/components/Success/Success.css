@@ -27,3 +27,7 @@
 .filme-sessao div:first-of-type, .ingressos div:first-of-type, .comprador-dados div:first-of-type {
     margin-top: 5px;
 }
+.success{
+    margin-top: 60px;
+    margin-bottom: 160px;
+}

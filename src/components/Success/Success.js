@@ -5,7 +5,7 @@ export default function Success(props){
     const { request, setRequest, setPageState } = props;
     setPageState("Success");
     return(
-        <>
+        <div className="success">
             <div className="titulo titulo-sucesso">Pedido feito <br></br> com sucesso!</div>
             <div className="pedido-feito">
                 <div className="filme-sessao">
@@ -32,6 +32,6 @@ export default function Success(props){
             <div className="botao-container">
                 <Link to="/"><button onClick={()=>setRequest([])} className="botao-assentos">Voltar para a Home</button></Link>
             </div>
-        </>
+        </div>
     );
 }
