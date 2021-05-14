@@ -1,4 +1,5 @@
 import Bottom from '../Bottom/Bottom';
+import Inputs from '../Inputs/Inputs';
 import './Seats.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -47,7 +48,9 @@ export default function Seats(props){
             }else {
                 listSeats.forEach(item =>{
                     if(item.id === id){
-                        item.selected = false;
+                        if(window.confirm("tem certeza?")){
+                            item.selected = false;
+                        }
                     } 
                 });
             }
@@ -91,14 +94,16 @@ export default function Seats(props){
                     <div className="legenda"><div className="indisponivel"></div><span>Indisponível</span></div>   
                 </div>
             </div>
-            <div className="dados-comprador">
-                <div className="titulo-comprador">Nome do comprador:</div>
-                <input onChange={e => setInputName(e.target.value)} value={inputName} placeholder="Digite seu nome..."></input>
-                <div className="titulo-comprador">CPF do comprador:</div>
-                <input onChange={e => setInputCPF(e.target.value)} value={inputCPF} placeholder="Digite seu CPF..."></input>
-            </div>
+            <Inputs listSeats={listSeats}/>
             <Link to="/sucesso"><div onClick={reserveSeats} className="botao-container"><button className="botao-assentos">Reservar assento(s)</button></div></Link>
             <Bottom type="seats" dataFooter={dataFooter}/>
         </div>
     );
 }
+
+/* <div className="dados-comprador">
+<div className="titulo-comprador">Nome do comprador:</div>
+<input onChange={e => setInputName(e.target.value)} value={inputName} placeholder="Digite seu nome..."></input>
+<div className="titulo-comprador">CPF do comprador:</div>
+<input onChange={e => setInputCPF(e.target.value)} value={inputCPF} placeholder="Digite seu CPF..."></input>
+</div> */
