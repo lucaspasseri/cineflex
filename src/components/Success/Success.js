@@ -2,7 +2,8 @@ import './Success.css'
 import { Link } from "react-router-dom";
 
 export default function Success(props){
-    const {request, setRequest} = props;
+    const { request, setRequest, setPageState } = props;
+    setPageState("Success");
     return(
         <>
             <div className="titulo titulo-sucesso">Pedido feito <br></br> com sucesso!</div>

@@ -3,29 +3,27 @@ import Home from '../Home/Home';
 import Sessions from '../Sessions/Sessions';
 import Seats from '../Seats/Seats';
 import Success from	'../Success/Success';
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 import { useState } from 'react';
 
-export default function Body(){
+export default function Body(props){
+	const { setPageState } = props;
 	const [request, setRequest] = useState([]);
-
     return(
-        <BrowserRouter>
 			<Switch>
 				<Route path="/" exact >
-					<Home />
+					<Home setPageState={setPageState}/>
 				</Route>
-                <Route path="/filme/:idFilme" exact>
-					<Sessions />
+                <Route path="/sessoes/:idFilm" exact>
+					<Sessions setPageState={setPageState}/>
 				</Route>
-                <Route path="/sessao/:idSessao" exact>
-					<Seats request={request} setRequest={setRequest}/>
+                <Route path="/assentos/:idSession" exact>
+					<Seats request={request} setRequest={setRequest} setPageState={setPageState}/>
 				</Route>
 				<Route path="/sucesso" exact>
-					<Success request={request} setRequest={setRequest}/>
+					<Success request={request} setRequest={setRequest} setPageState={setPageState}/>
 				</Route>
 			</Switch>
-		</BrowserRouter>
     );
 }
 

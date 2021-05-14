@@ -3,20 +3,21 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
-export default function Home(){
-    const [listaFilmes, setListaFilmes] = useState([]);
-
+export default function Home(props){
+    const { setPageState } = props;
+    setPageState("Home");
+    const [listFilms, setListFilms] = useState([]);
     useEffect(() => {
-		const requisicao = 
+		const request = 
             axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies");
 
-		requisicao.then(resposta => {
-			setListaFilmes(resposta.data);
+		request.then(response => {
+			setListFilms(response.data);
 		});
 	}, []);
 
-    const listaComponentizada = listaFilmes.map(item=> {
-        return <Link key={item.id} to={"filme/"+item.id}>
+    const listComponentized = listFilms.map(item=> {
+        return <Link key={item.id} to={"sessoes/"+item.id}>
                     <div key={item.id} 
                         className="cartaz" 
                         style={{backgroundImage:`url(${item.posterURL})`}}>
@@ -28,7 +29,7 @@ export default function Home(){
             <div className="titulo">Selecione o Filme</div>
             <div className="lista-filmes">
                {
-                    listaComponentizada.length===0? "Carregando..." : listaComponentizada
+                    listComponentized.length===0? "Carregando..." : listComponentized
                }     
             </div>
         </>

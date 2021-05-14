@@ -3,6 +3,11 @@
     background-color: #c3cfd9;
     display: flex;
     align-items: center;
+    position: fixed;
+    width: 375px;
+    box-shadow: 0px -4px 5px 1px rgba(0,0,0,0.57);
+    bottom: 0;
+    left: 0;
 }
 .poster {
     background-size: cover;

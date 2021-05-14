@@ -108,3 +108,8 @@ span {
     letter-spacing: -0.013em;
     color: #4E5A65;
 }
+
+.seats {
+    margin-top: 60px;
+    margin-bottom: 160px;
+}
