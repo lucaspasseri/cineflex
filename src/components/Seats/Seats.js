@@ -14,7 +14,7 @@ export default function Seats(props){
     const [inputCPF, setInputCPF] = useState("");
 
     useEffect(() => {
-		const requestGET = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/showtimes/${idSession}/seats`);
+		const requestGET = axios.get(`${process.env.REACT_APP_API_BASE_URL}/showtimes/${idSession}/seats`);
 
 		requestGET.then(response=> {
             const newArray = [];
@@ -66,7 +66,7 @@ export default function Seats(props){
                                         name: inputName,
                                         cpf: inputCPF
                                     };
-        const requestPost = axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/seats/book-many", objReserveSeats);
+        const requestPost = axios.post(`${process.env.REACT_APP_API_BASE_URL}/seats/book-many`, objReserveSeats);
         requestPost.then(response => {
             request.push(numberSelectedSeats);
             request.push(inputName);

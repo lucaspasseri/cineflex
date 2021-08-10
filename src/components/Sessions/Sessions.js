@@ -15,7 +15,7 @@ export default function Sessions(props){
     
     useEffect(() => {
         
-		const request = axios.get(`https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex/movies/${idFilm}/showtimes`);
+		const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}/movies/${idFilm}/showtimes`);
 
 		request.then(response => {
 			setListSessions(response.data.days);
