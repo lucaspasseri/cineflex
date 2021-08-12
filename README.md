@@ -71,10 +71,12 @@ Version Control:<br>
 ### Deploy
 
 The application layout is available on Vercel:
-<a style='margin-left: 10px;' href='https://projeto-cineflex.vercel.app/'><img src='https://img.shields.io/badge/vercel%20-%23000000.svg?&style=for-the-badge&logo=vercel&logoColor=white'></a>
+<p align="center">
+	<a style='margin-left: 10px;' href='https://projeto-cineflex.vercel.app/'><img src='https://img.shields.io/badge/vercel%20-%23000000.svg?&style=for-the-badge&logo=vercel&logoColor=white'></a>
+</p>
 
 
-### Authors
+### Author
 ---
 <p align='center'>
   Made by Lucas Passeri 👋🏽 Get in Touch! <br><br>
