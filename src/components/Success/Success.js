@@ -1,7 +1,8 @@
-//import "./Success.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React, { useEffect } from "react";
+import User from "../User/User";
+import styled from "styled-components";
 
 Success.propTypes = {
 	setPage: PropTypes.func.isRequired,
@@ -21,16 +22,12 @@ export default function Success(props){
 	const compradores = request.objReservedSeats?.compradores;
 	const ids = request.objReservedSeats?.ids;
 
-	const brief = ids?.map((item, n) =>{
-		return <>
-			<div>Assento: {ids[n]}</div>
-			<div>Nome: {compradores[n].nome}</div>
-			<div>CPF: {compradores[n].cpf}</div>
-		</>;
+	const brief = ids?.map((item, n) => {
+		return <User key={n} id={n} compradores={compradores} />;
 	} );
 
 	return (
-		<div className="success">
+		<Infos>
 			<div className="titulo titulo-sucesso">Pedido feito <br></br> com sucesso!</div>
 			<div className="pedido-feito">
 				<div className="filme-sessao">
@@ -52,6 +49,44 @@ export default function Success(props){
 			<div className="botao-container">
 				<Link to="/"><button onClick={()=>setRequest([])} className="botao-assentos">Voltar para a Home</button></Link>
 			</div>
-		</div>
+		</Infos>
 	);
 }
+
+const Infos = styled.div`
+	.titulo-sucesso{
+		font-weight: bold;
+		color: #247A6B;
+	}
+
+	.pedido-feito{
+		font-family: 'Roboto', sans-serif;
+		font-weight: bold;
+		font-size: 24px;
+		line-height: 28px;
+		display: flex;
+		flex-direction: column;
+		letter-spacing: 0.04em;
+		color: #293845;
+		margin-left: 29px;
+		margin-bottom: 50px;
+	}
+	.subtitulos {
+		font-size: 22px;
+		line-height: 26px;
+		font-weight: normal;
+	}
+
+	.filme-sessao, .ingressos, .comprador-dados {
+		margin-bottom: 40px;
+	}
+	.filme-sessao div:first-of-type, .ingressos div:first-of-type, .comprador-dados div:first-of-type {
+		margin-top: 5px;
+	}
+
+	.botao-container{
+		margin-bottom: 30px;
+		display: flex;
+		justify-content: center;
+	}
+`;
