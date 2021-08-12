@@ -4,12 +4,12 @@ import React from "react";
 import PropTypes from "prop-types";
 
 Top.propTypes = {
-	pageState: PropTypes.string.isRequired
+	page: PropTypes.string.isRequired
 };
 
 export default function Top(props){
-	const { pageState } = props;
-	const showBackButton = (pageState !== "" && pageState !== "Home" );
+	const { page} = props;
+	const showBackButton = (page !== "" && page !== "Home" );
 	let history = useHistory();
 	return (
 		<Header>

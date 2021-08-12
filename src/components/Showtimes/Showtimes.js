@@ -3,7 +3,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 Showtimes.propTypes = {
-	showtimes: PropTypes.arrayOf(PropTypes.string).isRequired
+	showtimes: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default function Showtimes(props){

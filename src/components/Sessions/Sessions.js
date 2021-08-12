@@ -8,23 +8,24 @@ import styled from "styled-components";
 
 
 Sessions.propTypes = {
-	setPageState: PropTypes.func.isRequired
+	setPage: PropTypes.func.isRequired
 };
 
 export default function Sessions(props){
-	const { setPageState } = props;
-	setPageState("Sessions");
+	const { setPage } = props;
+	
 	const [listSessions, setListSessions] = useState([]);
 	const [dataFooter, setDataFooter] = useState([]);
 	const { idFilm } = useParams();
     
-	useEffect(() => {
-        
-		// eslint-disable-next-line no-undef
-		const request = axios.get(`${process.env.REACT_APP_API_BASE_URL}/movies/${idFilm}/showtimes`);
+	useEffect(() => {		
+		setPage("Sessions");
+		
+		const request = 
+			// eslint-disable-next-line no-undef
+			axios.get(`${process.env.REACT_APP_API_BASE_URL}/movies/${idFilm}/showtimes`);
 
 		request.then(response => {
-			console.log(response.data);
 			setListSessions(response.data.days);
 			dataFooter.push(response.data.posterURL);
 			dataFooter.push(response.data.title);

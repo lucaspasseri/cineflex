@@ -1,41 +1,34 @@
 import Bottom from "../Bottom/Bottom";
-import Inputs from "../Inputs/Inputs";
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import Collapes from "../Collapses/Collapes";
 
 Seats.propTypes = {
-	setPageState: PropTypes.func.isRequired,
-	request: PropTypes.exact({
-		selectedSeatsNames: PropTypes.arrayOf(PropTypes.string),
-		movieTitle: PropTypes.string,
-		dayDate: PropTypes.string,
-		name: PropTypes.string,
-		objReserveSeats: PropTypes.object
-	}).isRequired,
+	setPage: PropTypes.func.isRequired,
+	request: PropTypes.any.isRequired,
 	setRequest: PropTypes.func.isRequired
 };
 
 export default function Seats(props){
-	const history = useHistory();
-	const { request, setRequest, setPageState } = props;
-	setPageState("Seats");
-	const [listSeats, setListSeats] = useState([]);
 
-	const numberedSeats = Array(50).fill("");
-	const [nameInputs, setNameInputs] = useState(numberedSeats);
-	const [cpfInputs, setCPFInputs] = useState(numberedSeats);
+	const history = useHistory();
+	const { request, setRequest, setPage } = props;
+	const [listSeats, setListSeats] = useState([]);
+	const [names, setNames] = useState(Array(50).fill(""));
+	const [cpfs, setCPFs] = useState(Array(50).fill(""));
 	const [dataFooter, setDataFooter] = useState([]);
 	const { idSession } = useParams();
 	useEffect(() => {
-
-		// eslint-disable-next-line no-undef
-		const requestGET = axios.get(`${process.env.REACT_APP_API_BASE_URL}/showtimes/${idSession}/seats`);
+		setPage("Seats");
+		
+		const requestGET = 
+			// eslint-disable-next-line no-undef
+			axios.get(`${process.env.REACT_APP_API_BASE_URL}/showtimes/${idSession}/seats`);
 
 		requestGET.then(response=> {
-			console.log(response.data);
 			const newArray = [];
 			response.data.seats.forEach(element => {
 				newArray.push({id: element.id,
@@ -78,30 +71,24 @@ export default function Seats(props){
 	}
 
 	function reserveSeats(){
-		console.log(listSeats);
-		console.log("XXXXXXX");
-		console.log(nameInputs);
-		console.log(cpfInputs);
 
 		const listSelectedSeats = listSeats.filter(item => item.selected===true);
-		//console.log(listSelectedSeats);
-
 		const nameSelectedSeats =listSelectedSeats.map(item => item.name);
 		const numbers = nameSelectedSeats.map(item => Number(item));
-		//console.log(numbers);
-		const objReserveSeats = { 
+
+		const objReservedSeats = { 
 			ids: numbers,
-			/* names: numbers.map(item => nameInputs[item-1]),
-			cpfs: numbers.map(item => cpfInputs[item-1]) */
+			compradores: numbers.map(item =>{
+				return ({idAssento: item,nome: names[item-1],cpf: cpfs[item-1]});
+			} )	
 		};
 
+		
 		// eslint-disable-next-line no-undef
-		const requestPost = axios.post(`${process.env.REACT_APP_API_BASE_URL}/seats/book-many`, objReserveSeats);
-		requestPost.then(response => {
-			console.log(response.data);
-			request.objReserveSeats = objReserveSeats;
+		const requestPost = axios.post(`${process.env.REACT_APP_API_BASE_URL}/seats/book-many`, objReservedSeats);
+		requestPost.then(() => {
+			request.objReservedSeats = objReservedSeats;
 			setRequest({...request});
-			//console.log(response);
 			history.push("/sucesso");
 		});
 		requestPost.catch(erro => alert(erro.response.data));
@@ -126,6 +113,21 @@ export default function Seats(props){
 		);
 	});
 
+	const listSelectedSeats = listSeats.filter(item => item.selected===true);
+	const nameSelectedSeats = listSelectedSeats.map(item => item.name);
+	const numbers = nameSelectedSeats.map(item => Number(item));
+
+	const inputs = numbers.map((item, n) => 
+		<Collapes 
+			key={n}
+			id={item} 
+			names={names}
+			setNames={setNames}
+			cpfs={cpfs}
+			setCPFs={setCPFs}
+		/>
+	);
+
 	return (
 		<SeatsList>
 			<div className="titulo">Selecione o(s) assento(s)</div>
@@ -139,13 +141,9 @@ export default function Seats(props){
 					<div className="legenda"><div className="indisponivel"></div><span>Indisponível</span></div>   
 				</div>
 			</div>
-			<Inputs 
-				listSeats={listSeats}
-				nameInputs={nameInputs}
-				setNameInputs={setNameInputs}
-				cpfInputs={cpfInputs}
-				setCPFInputs={setCPFInputs}
-			/>
+			{
+				inputs
+			}
 			<div 
 				onClick={reserveSeats} 
 				className="botao-container"

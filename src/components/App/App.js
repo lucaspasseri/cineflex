@@ -7,13 +7,16 @@ import Top from "../Top/Top";
 import Body from "../Body/Body";
 
 export default function App() {
-	const [pageState, setPageState] = useState("");
+	const [page, setPage] = useState("");
+
+	const [request, setRequest] = useState({});
+
 	return (
 		<Page>
 			<GlobalStyle />
 			<BrowserRouter>
-				<Top pageState={pageState}/>
-				<Body setPageState={setPageState}/>
+				<Top page={page}/>
+				<Body setPage={setPage} request={request} setRequest={setRequest}/>
 			</BrowserRouter>
 		</Page>
 	);

@@ -3,29 +3,31 @@ import Sessions from "../Sessions/Sessions";
 import Seats from "../Seats/Seats";
 import Success from	"../Success/Success";
 import { Route, Switch} from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 Body.propTypes = {
-	setPageState: PropTypes.func.isRequired
+	setPage: PropTypes.func.isRequired,
+	request: PropTypes.any.isRequired,
+	setRequest: PropTypes.func.isRequired
 };
 
 export default function Body(props){
-	const { setPageState } = props;
-	const [request, setRequest] = useState({});
+	const { setPage, request, setRequest } = props;
+
 	return (
 		<Switch>
 			<Route path="/" exact >
-				<Home setPageState={setPageState}/>
+				<Home setPage={setPage}/>
 			</Route>
 			<Route path="/sessoes/:idFilm" exact>
-				<Sessions setPageState={setPageState}/>
+				<Sessions setPage={setPage}/>
 			</Route>
 			<Route path="/assentos/:idSession" exact>
-				<Seats request={request} setRequest={setRequest} setPageState={setPageState}/>
+				<Seats setPage={setPage} request={request} setRequest={setRequest}/>
 			</Route>
 			<Route path="/sucesso" exact>
-				<Success request={request} setRequest={setRequest} setPageState={setPageState}/>
+				<Success setPage={setPage} request={request} setRequest={setRequest}/>
 			</Route>
 		</Switch>
 	);

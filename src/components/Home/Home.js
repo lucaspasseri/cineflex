@@ -5,16 +5,16 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 Home.propTypes = {
-	setPageState: PropTypes.func.isRequired
+	setPage: PropTypes.func.isRequired
 };
 
 export default function Home(props){
-
-	const { setPageState } = props;
-	setPageState("Home");
 	const [listFilms, setListFilms] = useState([]);
-
+	const { setPage } = props;
+	
+	
 	useEffect(() => {
+		setPage("Home");
 		const request = 
             // eslint-disable-next-line no-undef
             axios.get(`${process.env.REACT_APP_API_BASE_URL}/movies`);
