@@ -31,7 +31,7 @@ const Header = styled.div `
     display: flex;
     justify-content: space-between;
     position: fixed;
-    width: 375px;
+    width: 100vw;
     box-shadow: 0px 4px 5px 1px rgba(0,0,0,0.57);
     top: 0;
     left: 0;

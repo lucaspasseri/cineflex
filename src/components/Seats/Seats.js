@@ -83,7 +83,6 @@ export default function Seats(props){
 			} )	
 		};
 
-		
 		// eslint-disable-next-line no-undef
 		const requestPost = axios.post(`${process.env.REACT_APP_API_BASE_URL}/seats/book-many`, objReservedSeats);
 		requestPost.then(() => {
@@ -167,6 +166,7 @@ const SeatsList = styled.div`
 		.grade {
 			display: grid;
 			margin-left: 24px;
+			margin-right: 24px;
 			grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
 			row-gap: 15px;
 		}
@@ -204,10 +204,3 @@ const SeatsList = styled.div`
 	}
 	
 `;
-
-/* <div className="dados-comprador">
-<div className="titulo-comprador">Nome do comprador:</div>
-<input onChange={e => setInputName(e.target.value)} value={inputName} placeholder="Digite seu nome..."></input>
-<div className="titulo-comprador">CPF do comprador:</div>
-<input onChange={e => setInputCPF(e.target.value)} value={inputCPF} placeholder="Digite seu CPF..."></input>
-</div> */

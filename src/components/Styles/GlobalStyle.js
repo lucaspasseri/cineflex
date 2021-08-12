@@ -122,6 +122,37 @@ const GlobalStyle = createGlobalStyle`
         margin-left: 24px;
         margin-bottom: 57px;
     }
+
+	.rodape {
+		height: 117px;
+		background-color: #c3cfd9;
+		display: flex;
+		align-items: center;
+		position: fixed;
+		width: 100vw;
+		box-shadow: 0px -4px 5px 1px rgba(0,0,0,0.57);
+		bottom: 0;
+		left: 0;
+	}
+	.poster {
+		background-size: cover;
+		width: 64px;
+		height: 89px;
+		border: 8px solid #fff;
+		margin-left: 10px;
+	}
+
+	.dados-filme {
+		font-family: 'Roboto', sans-serif;
+		font-size: 26px;
+		line-height: 30px;
+		display: flex;
+		align-items: center;
+		color: #293845;
+	}
+	.container-infos-filme{
+		margin-left: 14px;
+	}
 `;
 
 export default GlobalStyle;
