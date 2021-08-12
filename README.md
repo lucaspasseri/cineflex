@@ -80,14 +80,16 @@ The application layout is available on Vercel:
 ---
 <p align='center'>
   Made by Lucas Passeri 👋🏽 Get in Touch! <br><br>
-<table>
-  <tr>
-    <td align="center"><p align='center'>
-	  <img src="https://avatars.githubusercontent.com/u/16906161?v=4" width="100px;"/> <br />
- <sub><b>Lucas Passeri</b></sub></a> <br />
-	  <a href="https://www.linkedin.com/in/lucas-passeri-7b05377b/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-	  <a href="mailto:lucaspasseri@poli.ufrj.br"><img src="https://img.shields.io/badge/gmail-D14836?&style=for-the-badge&logo=gmail&logoColor=white"/></a>
-  </p><br />
-  </tr>
-</table>
+	<table align="center">
+  		<tr>
+    		<td align="center">
+				<p align='center'>
+	  				<img src="https://avatars.githubusercontent.com/u/16906161?v=4" width="100px;"/> <br />
+ 					<sub><b>Lucas Passeri</b></sub><br />
+	  				<a href="https://www.linkedin.com/in/lucas-passeri-7b05377b/"><img src="https://img.shields.io/badge/linkedin-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+	  				<a href="mailto:lucaspasseri@poli.ufrj.br"><img src="https://img.shields.io/badge/gmail-D14836?&style=for-the-badge&logo=gmail&logoColor=white"/></a>
+  				</p><br />
+			</td>
+  		</tr>
+	</table>
 </p>
