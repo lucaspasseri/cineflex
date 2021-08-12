@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="./public/logo.png" width="100" alt="CineFlex" />
+  <img src="PUBLIC_URL%/logo.jpeg" width="100" alt="CineFlex" />
 </p>
 
-# CineFLex
+# CineFlex
 
 ## About
 <p>
