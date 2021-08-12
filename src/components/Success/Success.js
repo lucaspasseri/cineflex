@@ -39,7 +39,7 @@ export default function Success(props){
 				</div>
 				<div className="comprador-dados">
 					<div>Assentos</div>
-					<div className="subtitulos">
+					<div className="brief">
 						{
 							brief
 						}
@@ -70,8 +70,21 @@ const Infos = styled.div`
 		color: #293845;
 		margin-left: 29px;
 		margin-bottom: 50px;
+
+		@media screen and (min-width: 700px) {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-left: 0;
+			
+			.subtitulos{
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+		} 
 	}
-	.subtitulos {
+	.brief {
 		font-size: 22px;
 		line-height: 26px;
 		font-weight: normal;
@@ -79,6 +92,12 @@ const Infos = styled.div`
 
 	.filme-sessao, .ingressos, .comprador-dados {
 		margin-bottom: 40px;
+		display:flex;
+		flex-direction: column;
+		@media screen and (min-width: 700px) {
+			justify-content: center;
+			align-items: center;
+		} 
 	}
 	.filme-sessao div:first-of-type, .ingressos div:first-of-type, .comprador-dados div:first-of-type {
 		margin-top: 5px;

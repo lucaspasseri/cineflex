@@ -23,5 +23,5 @@ export default function App() {
 }
 
 const Page = styled.div`
-    width: 375px;
+    width: 100vw;
 `;

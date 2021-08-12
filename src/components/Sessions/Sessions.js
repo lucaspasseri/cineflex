@@ -58,11 +58,18 @@ const SessionsList = styled.div`
 
 	.lista-sessoes{
 		padding: 0 0 150px 30px;
+
+		@media screen and (min-width: 700px) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		} 
 	}
 `;
 
 const SessionContainer = styled.div`
 	margin-bottom: 20px;
+	width: 260px;
 
 	.dia {
 		height: 35px;
