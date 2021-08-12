@@ -21,10 +21,10 @@ $ git clone <https://github.com/lucaspasseri/projeto-cineflex.git>
 # Access the project folder cmd/terminal
 $ cd projeto-cineflex
 
-# You will need this API the run the application
+# You will need this API to run the application
 https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex
 
-# Create a .env file at the root of the project. And configure the enviroment variable:
+# Create a .env file at the root of the project. And configure the environment variable
 REACT_APP_API_BASE_URL=https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex
 
 # Install the dependencies
