@@ -1,29 +1,35 @@
-import "./Body.css";
-import Home from '../Home/Home';
-import Sessions from '../Sessions/Sessions';
-import Seats from '../Seats/Seats';
-import Success from	'../Success/Success';
+import Home from "../Home/Home";
+import Sessions from "../Sessions/Sessions";
+import Seats from "../Seats/Seats";
+import Success from	"../Success/Success";
 import { Route, Switch} from "react-router-dom";
-import { useState } from 'react';
+import React from "react";
+import PropTypes from "prop-types";
+
+Body.propTypes = {
+	setPage: PropTypes.func.isRequired,
+	request: PropTypes.any.isRequired,
+	setRequest: PropTypes.func.isRequired
+};
 
 export default function Body(props){
-	const { setPageState } = props;
-	const [request, setRequest] = useState([]);
-    return(
-			<Switch>
-				<Route path="/" exact >
-					<Home setPageState={setPageState}/>
-				</Route>
-                <Route path="/sessoes/:idFilm" exact>
-					<Sessions setPageState={setPageState}/>
-				</Route>
-                <Route path="/assentos/:idSession" exact>
-					<Seats request={request} setRequest={setRequest} setPageState={setPageState}/>
-				</Route>
-				<Route path="/sucesso" exact>
-					<Success request={request} setRequest={setRequest} setPageState={setPageState}/>
-				</Route>
-			</Switch>
-    );
+	const { setPage, request, setRequest } = props;
+
+	return (
+		<Switch>
+			<Route path="/" exact >
+				<Home setPage={setPage}/>
+			</Route>
+			<Route path="/sessoes/:idFilm" exact>
+				<Sessions setPage={setPage}/>
+			</Route>
+			<Route path="/assentos/:idSession" exact>
+				<Seats setPage={setPage} request={request} setRequest={setRequest}/>
+			</Route>
+			<Route path="/sucesso" exact>
+				<Success setPage={setPage} request={request} setRequest={setRequest}/>
+			</Route>
+		</Switch>
+	);
 }
 
