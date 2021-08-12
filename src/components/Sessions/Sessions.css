@@ -11,19 +11,6 @@
     align-items: center;
     letter-spacing: 0.02em;
 }
-.botao-sessoes {
-    width: 83px;
-    height: 43px;
-    background: #E8833A;
-    border-radius: 3px;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    line-height: 21px;
-    letter-spacing: 0.02em;
-    color: #FFFFFF;
-    border: none;
-    margin-right: 9px;
-}
 
 .card-sessoes {
     margin-bottom: 20px;

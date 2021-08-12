@@ -1,4 +1,3 @@
-import "./Body.css";
 import Home from "../Home/Home";
 import Sessions from "../Sessions/Sessions";
 import Seats from "../Seats/Seats";

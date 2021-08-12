@@ -1,22 +1,38 @@
 import "./Success.css";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+/* import React, { useEffect } from "react";
+import isDeepStrictEqual from "util"; */
 import React from "react";
 
 Success.propTypes = {
 	setPageState: PropTypes.func.isRequired,
 	request: PropTypes.exact({
 		selectedSeatsNames: PropTypes.arrayOf(PropTypes.string),
-		/* inputName: PropTypes.string,
-		inputCPF: PropTypes.string
- */
+		movieTitle: PropTypes.string,
+		dayDate: PropTypes.string,
+		name: PropTypes.string,
+		objReserveSeats: PropTypes.object
 	}).isRequired,
 	setRequest: PropTypes.func.isRequired
 };
 
 export default function Success(props){
 	const { request, setRequest, setPageState } = props;
-	setPageState("Success");
+	console.log(request);
+	setPageState("Success");	
+	/* const history = useHistory();
+	
+	useEffect(() => {
+		if(isDeepStrictEqual(request, object2) ){
+		}
+
+	}, []); */
+	
+	
+
+	
+
 	return (
 		<div className="success">
 			<div className="titulo titulo-sucesso">Pedido feito <br></br> com sucesso!</div>
@@ -24,21 +40,23 @@ export default function Success(props){
 				<div className="filme-sessao">
 					<div>Filme e sessão</div>
 					<div>
-						<div className="subtitulos">{request[0]}</div>
-						<div className="subtitulos">{request[1]} {request[2]}</div>
+						<div className="subtitulos">{request.movieTitle}</div>
+						<div className="subtitulos">{request.dayDate} - {request.name} </div>
 					</div>
 				</div>
 				<div className="ingressos">
 					<div>Ingressos</div>
 					<div className="subtitulos">
-						{/* {request.length===0||request[3]===undefined?"carregando...":request[3].map(item=><div>Assento {item}</div>)} */}
+						{
+							request.objReserveSeats?.ids.map(item=><div key ={Number(item)-1}>Assento {item}</div>)							
+						}
 					</div>
 				</div>
 				<div className="comprador-dados">
 					<div>Comprador</div>
 					<div>
-						<div className="subtitulos">Nome: {request[4]}</div>
-						<div className="subtitulos">CPF: {request[5]}</div>
+						<div className="subtitulos">Nome: {/* request.objReserveSeats?.names[0] */}</div>
+						<div className="subtitulos">CPF: {/* request.objReserveSeats?.cpfs[0] */}</div>
 					</div>
 				</div>
 			</div>
