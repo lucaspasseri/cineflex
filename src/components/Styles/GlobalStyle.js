@@ -25,9 +25,13 @@ const GlobalStyle = createGlobalStyle`
 		justify-content: center;
 		padding-top: 80px;
 		font-weight: bold;
+
+		@media screen and (max-width: 425px) {
+			font-size: 20px;
+		} 
 	}
 
-    .botao-sessoes {
+    .botao {
 		width: 83px;
 		height: 43px;
 		background: #E8833A;
@@ -41,18 +45,8 @@ const GlobalStyle = createGlobalStyle`
 		margin-right: 9px;
 	}
 
-    .botao-assentos {
-        width: 225px;
-        height: 43px;
-        background: #E8833A;
-        border-radius: 3px;
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-        line-height: 21px;
-        letter-spacing: 0.02em;
-        color: #FFFFFF;
-        border: none;
-        margin-right: 9px;
+    .assentos {
+        width: 250px;
     }
 
     .selecionado {

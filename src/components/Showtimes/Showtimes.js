@@ -9,7 +9,7 @@ Showtimes.propTypes = {
 export default function Showtimes(props){
 	const { showtimes } = props;
 	const listComponentized = showtimes.map(item=>{
-		return <Link key={item.id} to={"/assentos/"+item.id}><button key={item.id} className="botao-sessoes">{item.name}</button></Link>;
+		return <Link key={item.id} to={"/assentos/"+item.id}><button key={item.id} className="botao">{item.name}</button></Link>;
 	});
 	return (
 		<div className="horarios">
