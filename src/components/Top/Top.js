@@ -15,7 +15,7 @@ export default function Top(props){
 		<Header>
 			<div className="voltar-container">
 				{showBackButton?
-					<button onClick={()=>history.goBack()} className="botao-sessoes">Voltar</button>
+					<button onClick={()=>history.goBack()} className="botao">Voltar</button>
 					:
 					""
 				}
@@ -36,6 +36,7 @@ const Header = styled.div `
     top: 0;
     left: 0;
 	z-index: 1;
+	padding: 0 10px;
 
 	.filler, .voltar-container{
     	width: 30%;
@@ -52,6 +53,10 @@ const Header = styled.div `
 		font-size: 34px;
 		line-height: 40px;
 		color: #d99f76;
+
+		@media screen and (max-width: 425px) {
+			font-size: 30px;
+		} 
 	}
 `; 
 

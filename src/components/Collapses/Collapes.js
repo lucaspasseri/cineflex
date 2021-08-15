@@ -54,12 +54,14 @@ const Inputs = styled.div`
 		align-items: center;
 	}
 	span {
-		width: 50px;
+		width: 65px;
+		padding-right: 5px;
 	}
 	input {
 		padding-left: 10px;
+		padding-top: 8px;
 	}
-	@media screen and (max-width: 320px) {
+	@media screen and (max-width: 375px) {
 		input {
 			width: 280px;
 		}

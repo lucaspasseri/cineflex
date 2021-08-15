@@ -140,18 +140,19 @@ export default function Seats(props){
 					<div className="legenda"><div className="indisponivel"></div><span>Indisponível</span></div>   
 				</div>
 			</div>
-			{
-				inputs
-			}
+			<div className="inputs-styles">
+				{inputs}
+			</div>
+			
 			<div 
 				onClick={reserveSeats} 
 				className="botao-container"
 			>
 				<button 
 					disabled={!listSeats.find(item=>item.selected===true)} 
-					className="botao-assentos"
+					className="botao assentos"
 				>
-					Reservar assento(s)
+					Reservar assento(s)!
 				</button>
 			</div>
 			<Bottom type="seats" dataFooter={dataFooter}/>
@@ -160,8 +161,28 @@ export default function Seats(props){
 }
 
 const SeatsList = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.inputs-styles {
+		font-size: 20px;
+		line-height: 40px;
+		display: flex;
+		flex-direction: column;
+	}
+
 	.grade-container {
 		margin-bottom: 45px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		@media screen and (min-width: 425px) {
+			width: 425px;
+		} 
 
 		.grade {
 			display: grid;
@@ -169,6 +190,8 @@ const SeatsList = styled.div`
 			margin-right: 24px;
 			grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
 			row-gap: 15px;
+			width: 300px;
+
 		}
 		.legendas {
 			display: flex;
@@ -179,6 +202,7 @@ const SeatsList = styled.div`
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				padding: 3px;
 			}	
 		}
 	}
@@ -187,20 +211,6 @@ const SeatsList = styled.div`
 		display: flex;
 		justify-content: center;
 		padding-bottom: 140px;
-
-		.botao-assentos {
-			width: 225px;
-			height: 43px;
-			background: #E8833A;
-			border-radius: 3px;
-			font-family: 'Roboto', sans-serif;
-			font-size: 18px;
-			line-height: 21px;
-			letter-spacing: 0.02em;
-			color: #FFFFFF;
-			border: none;
-			margin-right: 9px;
-		}
 	}
 	
 `;

@@ -47,7 +47,7 @@ export default function Success(props){
 				</div>
 			</div>
 			<div className="botao-container">
-				<Link to="/"><button onClick={()=>setRequest([])} className="botao-assentos">Voltar para a Home</button></Link>
+				<Link to="/"><button onClick={()=>setRequest([])} className="botao assentos">Voltar para a Home</button></Link>
 			</div>
 		</Infos>
 	);
