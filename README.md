@@ -70,6 +70,10 @@ Version Control:<br>
 
 ### Deploy
 
+<p align="center">
+  <img src="/public/cineflex-view.jpeg" width="600" alt="cineflex-view" />
+</p>
+
 The application layout is available on Vercel:
 <p align="center">
 	<a style='margin-left: 10px;' href='https://projeto-cineflex.vercel.app/'><img src='https://img.shields.io/badge/vercel%20-%23000000.svg?&style=for-the-badge&logo=vercel&logoColor=white'></a>
