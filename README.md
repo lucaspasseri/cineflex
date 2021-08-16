@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/public/logo.jpeg" width="200" alt="cineflex-logo" />
+  <img src="/public/logo.jpeg" width="300" alt="cineflex-logo" />
 </p>
 
 # CineFlex
@@ -71,7 +71,7 @@ Version Control:<br>
 ### Deploy
 
 <p align="center">
-  <img src="/public/cineflex-view.png" width="600" alt="cineflex-view" />
+  <img src="/public/cineflex-view.png" width="1000" alt="cineflex-view" />
 </p>
 
 The application layout is available on Vercel:
