@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/public/logo.jpeg" width="120" alt="cineflex-logo" />
+  <img src="/public/logo.jpeg" width="200" alt="cineflex-logo" />
 </p>
 
 # CineFlex
