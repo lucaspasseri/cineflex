@@ -16,7 +16,7 @@ Before you begin, you will need to have the following tools installed on your ma
 ### Running the web application
 ```bash
 # Clone this repository
-$ git clone <https://github.com/lucaspasseri/cineflex.git>
+$ git clone https://github.com/lucaspasseri/cineflex.git
 
 # Access the project folder cmd/terminal
 $ cd cineflex
