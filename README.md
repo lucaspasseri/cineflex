@@ -16,10 +16,10 @@ Before you begin, you will need to have the following tools installed on your ma
 ### Running the web application
 ```bash
 # Clone this repository
-$ git clone <https://github.com/lucaspasseri/projeto-cineflex.git>
+$ git clone <https://github.com/lucaspasseri/cineflex.git>
 
 # Access the project folder cmd/terminal
-$ cd projeto-cineflex
+$ cd cineflex
 
 # You will need this API to run the application
 https://mock-api.bootcamp.respondeai.com.br/api/v2/cineflex
